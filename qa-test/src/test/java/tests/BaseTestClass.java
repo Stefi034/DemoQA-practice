@@ -1,7 +1,7 @@
 package tests;
-import utils.DriverUtils;
+import qaPractice.utils.DriverUtils;
 import org.openqa.selenium.WebDriver;
-import static utils.DriverUtils.quitDriver;
+import static qaPractice.utils.DriverUtils.quitDriver;
 
 public abstract class BaseTestClass {
     protected static WebDriver setUpDriver(){
