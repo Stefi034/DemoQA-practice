@@ -3,8 +3,8 @@ package tests;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import pages.Interactions;
-import pages.MainPage;
+import qaPractice.pages.Interactions;
+import qaPractice.pages.Dashboard;
 
 public class OpenInteractionPageAndPerformDragAndDropTest extends BaseTestClass{
 
@@ -17,9 +17,9 @@ public class OpenInteractionPageAndPerformDragAndDropTest extends BaseTestClass{
     @Test
 
     public void test(){
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open();
-        mainPage.openInteractionsPage();
+        Dashboard dashboard = new Dashboard(driver);
+        dashboard.open();
+        dashboard.openInteractionsPage();
         Interactions interactions = new Interactions(driver);
         interactions.verifyInteractionsClass()
                 .openDraggable()

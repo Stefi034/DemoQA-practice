@@ -1,4 +1,4 @@
-package utils;
+package qaPractice.utils;
 
 
 import org.openqa.selenium.WebDriver;
