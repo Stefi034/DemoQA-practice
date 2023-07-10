@@ -1,6 +1,5 @@
 package qaPractice.pages;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 
@@ -16,43 +15,40 @@ public class Interactions extends Main {
     }
 
     public Interactions verifyInteractionsClass() {
-        verifyClass(PAGE_HEADER,3,INTERACTIONS);
+        verifyClass(PAGE_HEADER, 3, INTERACTIONS);
         return this;
     }
-    public Interactions openDraggable (){
+
+    public Interactions openDraggable() {
         openElementFromList(elementFromList(DRAGABBLE));
         return this;
     }
-    public Interactions openDraggableSimple(){
+
+    public Interactions openDraggableSimple() {
         clickWebElement(draggableNav(SIMPLE));
         return this;
     }
-    public Interactions boxLocationBeforeMove(){
+
+    public Interactions boxLocationBeforeMove() {
         before = elementLocationBefore("Drag me");
         return this;
     }
-    public Interactions boxLocationAfterMove(){
+
+    public Interactions boxLocationAfterMove() {
         after = elementLocationBefore("Drag me");
         return this;
     }
 
 
-
-    public Interactions dragAndDropInSimple(){
-//        before = elementLocationBefore("Drag me");
-        dragAndDrop(dragBoxLocator("Drag me"),70,70);
-//        after = elementLocationAfter("Drag me");
-        return this;
-    }
-    public Interactions verifyDragMeMoved(){
-        verifyObjectMoved(before,after);
+    public Interactions dragAndDropInSimple() {
+        dragAndDrop(dragBoxLocator("Drag me"), 70, 70);
         return this;
     }
 
-
-
-
-
+    public Interactions verifyDragMeMoved() {
+        verifyObjectMoved(before, after);
+        return this;
+    }
 
 
 }
