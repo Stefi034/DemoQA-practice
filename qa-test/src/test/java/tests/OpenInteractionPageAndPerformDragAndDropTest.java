@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -23,9 +24,15 @@ public class OpenInteractionPageAndPerformDragAndDropTest extends BaseTestClass{
         Interactions interactions = new Interactions(driver);
         interactions.verifyInteractionsClass()
                 .openDraggable()
-                .openDraggableElement();
-
-
+                .openDraggableSimple()
+                .boxLocationBeforeMove()
+                .dragAndDropInSimple()
+                .boxLocationAfterMove()
+                .verifyDragMeMoved();
+    }
+    @AfterAll
+    public static void tearDownTest() {
+        tearDown(driver);
     }
 
 

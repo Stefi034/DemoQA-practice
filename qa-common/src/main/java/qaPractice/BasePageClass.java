@@ -1,10 +1,7 @@
 package qaPractice;
 
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -56,6 +53,7 @@ public abstract class BasePageClass {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
+
 
     protected boolean isElementDisplayed(By locator) {
         try {
@@ -174,6 +172,13 @@ public abstract class BasePageClass {
         WebElement element = driver.findElement(locator);
         JavascriptExecutor jse = (JavascriptExecutor) driver;
         jse.executeScript("arguments[0].value='" + text + "'" + element);
+    }
+    public void scrollToElementJS(By locator){
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].scrollIntoView();",getWebElement(locator));
+    }
+    protected Point getElementLocation(By locator){
+        return getWebElement(locator).getLocation();
     }
 
     public void dragAndDropToLocation(By locator, By targetLocator) {

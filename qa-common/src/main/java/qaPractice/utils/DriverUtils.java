@@ -9,7 +9,8 @@ import java.time.Duration;
 public class DriverUtils {
     public static WebDriver setUpDriver() {
 
-        System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "C:/Selenium/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","/home/stefi034/Documents/webdriver/chromedriver");
 
         WebDriver driver = new ChromeDriver();
 
