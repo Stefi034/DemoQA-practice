@@ -1,37 +1,36 @@
 package qaPractice.pages;
-import data.PageUrls;
 
-import data.Time;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import qaPractice.Main;
+
+import static data.PageUrls.DASHBOARD;
+import static data.constants.ButtonNames.*;
+import static data.constants.Locators.DASHBOARD_BANNER_LOCATOR;
+import static data.constants.Locators.categoryCards;
 
 public class Dashboard extends Main {
 
     public Dashboard(WebDriver driver) {
         super(driver);
     }
-    public final String DASHBOARD_URL = PageUrls.DASHBOARD;
-    private By CATEGORY_CARDS(String name){
-        return By.xpath("//div[@class='body-height']//div[@class='category-cards']//h5[text()='"+name+"']");
-    }
 
     public Dashboard open(){
-        openPage(DASHBOARD_URL);
+        openPage(DASHBOARD);
         return this;
     }
-    public Widgets openWidgetsPage(By locator){
-        waitForElementToBeVisible(CATEGORY_CARDS("Widgets"), 3);
-        clickWebElement(locator);
+    public Dashboard verifyDashboardPage(){
+        verifyClass(DASHBOARD_BANNER_LOCATOR,3,DASHBOARD);
+        return this;
+    }
+
+    public Widgets openWidgetsPage(){
+        clickWebElement(categoryCards(WIDGETS));
         Widgets widgets = new Widgets(driver);
         return widgets.verifyWidgetsClass();
     }
     public Interactions openInteractionsPage(){
-        waitForElementToBeVisible(CATEGORY_CARDS("Interactions"),3);
-        clickWebElement(CATEGORY_CARDS("Interactions"));
+        clickWebElement(categoryCards(INTERACTIONS));
         Interactions interactions = new Interactions(driver);
         return interactions.verifyInteractionsClass();
-
     }
 
 

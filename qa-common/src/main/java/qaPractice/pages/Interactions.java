@@ -1,52 +1,55 @@
 package qaPractice.pages;
 
-import data.Time;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import qaPractice.BasePageClass;
-import qaPractice.Main;
+
+import static data.constants.ButtonNames.*;
+import static data.constants.Locators.*;
 
 public class Interactions extends Main {
+    private Point before;
+    private Point after;
 
     public Interactions(WebDriver driver) {
         super(driver);
     }
-    private final By INTERACTIONS_PAGE_HEADER = By.xpath("//div[@class='body-height']//div[@class='main-header']");
-    private By elementFromList(String listElement){
-        return By.xpath("//div[@class='body-height']//span[text()='"+listElement+"']/parent::li");
-    }
-    private By elementFromGroup(String groupElement){
-        return By.xpath("//div[@class='body-height']//div[text()='"+groupElement+"']/following-sibling::div");
-    }
-    private By draggableNav(String item){
-        return By.xpath("//div[contains(@class,'col-md-6')]//nav[@class='nav nav-tabs']/a[text()='"+item+"']");
-    }
-    private By draggableNavIsSelected(String item){
-        return By.xpath("//div[contains(@class,'col-md-6')]//nav[@class='nav nav-tabs']/a[text()='"+item+"'][@aria-selected='true']");
-    }
+
     public Interactions verifyInteractionsClass() {
-        waitForElementToBeVisible(INTERACTIONS_PAGE_HEADER, Time.TIME_SHORT);
-        String interactionsPage = getTextFromWebElement(INTERACTIONS_PAGE_HEADER);
-        Assertions.assertEquals("Interactions", interactionsPage);
+        verifyClass(PAGE_HEADER,3,INTERACTIONS);
         return this;
     }
     public Interactions openDraggable (){
-        moveToElement(elementFromList("Dragabble"));
-        waitForElementToBeClickable(elementFromList("Dragabble"),Time.TIME_MEDIUM);
+        openElementFromList(elementFromList(DRAGABBLE));
+        return this;
+    }
+    public Interactions openDraggableSimple(){
+        clickWebElement(draggableNav(SIMPLE));
+        return this;
+    }
+    public Interactions boxLocationBeforeMove(){
+        before = elementLocationBefore("Drag me");
+        return this;
+    }
+    public Interactions boxLocationAfterMove(){
+        after = elementLocationBefore("Drag me");
+        return this;
+    }
 
-//        scrollToElement(elementFromList("Dragabble"));
-        Assertions.assertTrue(isElementDisplayed(elementFromList("Dragabble")));
-        waitAndClickWebElement(elementFromList("Dragabble"),Time.TIME_MEDIUM);
+
+
+    public Interactions dragAndDropInSimple(){
+//        before = elementLocationBefore("Drag me");
+        dragAndDrop(dragBoxLocator("Drag me"),70,70);
+//        after = elementLocationAfter("Drag me");
         return this;
     }
-    public Interactions openDraggableElement(){
-        waitForElementToBeVisible(draggableNav("Simple"),Time.TIME_MEDIUM);
-        Assertions.assertTrue(isElementDisplayed(draggableNav("Simple")));
-        clickWebElement(draggableNav("Simple"));
-        Assertions.assertTrue(isElementDisplayed(draggableNavIsSelected("Simple")));
+    public Interactions verifyDragMeMoved(){
+        verifyObjectMoved(before,after);
         return this;
     }
+
+
 
 
 
