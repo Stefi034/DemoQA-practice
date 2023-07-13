@@ -1,8 +1,7 @@
-package qaPractice.pages;
+package qaPractice.pages.category;
 
 import data.Time;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import qaPractice.BasePageClass;
 
@@ -11,7 +10,7 @@ import static data.constants.Locators.PAGE_HEADER;
 
 public class Widgets extends BasePageClass {
 
-    protected Widgets(WebDriver driver) {
+    public Widgets(WebDriver driver) {
         super(driver);
     }
 
