@@ -1,13 +1,13 @@
-package tests;
+package tests.interactions;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import qaPractice.pages.Interactions;
+import qaPractice.pages.category.Interactions;
 import qaPractice.pages.Dashboard;
+import tests.BaseTestClass;
 
-public class OpenInteractionPageAndPerformDragAndDropTest extends BaseTestClass{
+public class OpenInteractionPageAndPerformDragAndDropTest extends BaseTestClass {
 
     private static WebDriver driver;
 
@@ -30,10 +30,10 @@ public class OpenInteractionPageAndPerformDragAndDropTest extends BaseTestClass{
                 .boxLocationAfterMove()
                 .verifyDragMeMoved();
     }
-    @AfterAll
-    public static void tearDownTest() {
-        tearDown(driver);
-    }
+//    @AfterAll
+//    public static void tearDownTest() {
+//        tearDown(driver);
+//    }
 
 
 

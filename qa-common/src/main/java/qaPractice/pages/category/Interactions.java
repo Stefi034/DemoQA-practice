@@ -1,7 +1,8 @@
-package qaPractice.pages;
+package qaPractice.pages.category;
 
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import qaPractice.pages.Main;
 
 import static data.constants.ButtonNames.*;
 import static data.constants.Locators.*;

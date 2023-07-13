@@ -1,12 +1,22 @@
 package data.constants;
 
 public class ButtonNames {
-    //Interactions
-    public static final String DRAGABBLE = "Dragabble";
-    public static final String SIMPLE = "Simple";
+
+    public static final String WEB_TABLES = "Web Tables";
+    //Categories
+    public static final String ELEMENTS = "Elements";
+    public static final String FORMS = "Forms";
+    public static final String ALERTS_FRAMES_WIN = "Alerts, Frame & Windows";
     public static final String INTERACTIONS = "Interactions";
     public static final String WIDGETS = "Widgets";
-    public static final String FORMS = "Forms";
+    public static final String BOOK_STORE_APP = "Book Store Application";
+
+    //Elements category
+    public static final String SUBMIT = "Submit";
+    public static final String TEXT_BOX = "Text Box";
+    //Interactions category
+    public static final String DRAGABBLE = "Dragabble";
+    public static final String SIMPLE = "Simple";
 
 
 

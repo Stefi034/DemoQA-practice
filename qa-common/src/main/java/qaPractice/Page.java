@@ -5,11 +5,8 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import qaPractice.pages.Interactions;
 
-
-import static data.constants.Locators.PAGE_HEADER;
-import static data.constants.Locators.dragBoxLocator;
+import static data.constants.Locators.*;
 
 
 public class Page extends BasePageClass {
@@ -32,17 +29,26 @@ public class Page extends BasePageClass {
         Assertions.assertTrue(isElementDisplayed(locator));
     }
 
-    public Point dragBoxCoordinates(By locator) {
+    protected Point dragBoxCoordinates(By locator) {
         return getElementLocation(locator);
     }
-    public Point elementLocationBefore(String dragBoxName){
+    protected Point elementLocationBefore(String dragBoxName){
         return getElementLocation(dragBoxLocator(dragBoxName));
     }
-    public Point elementLocationAfter(String dragBoxName){
+    protected Point elementLocationAfter(String dragBoxName){
         return getElementLocation(dragBoxLocator(dragBoxName));
     }
     protected void verifyObjectMoved(Point beforeAction, Point afterAction){
         Assertions.assertNotEquals(beforeAction,afterAction,"Object didn't move!");
+    }
+    protected void clickOnButton(String buttonLabel){
+        clickWebElement(buttonLocator(buttonLabel));
+    }
+    protected void inputTextInputField(String label,String placeholderText, String inputText){
+        typeTextToWebElement(inputField(label,placeholderText),inputText);
+    }
+    protected void inputTextTextArea(String label, String inputText){
+        typeTextToWebElement(textAreaInputField(label),inputText);
     }
 
 

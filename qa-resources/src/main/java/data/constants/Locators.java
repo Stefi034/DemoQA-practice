@@ -9,6 +9,19 @@ public class Locators {
     public static By categoryCards(String name){
         return By.xpath(String.format("//div[@class='body-height']//div[@class='category-cards']//h5[text()='%s']",name));
     }
+    //Elements
+    public static By inputField(String label, String placeholderText){
+        return By.xpath(String.format("//label[text()='%s']/parent::div/following-sibling::div//input[@placeholder='%s']",label,placeholderText));
+    }
+    public static By textAreaInputField(String label){
+        return By.xpath(String.format("//label[text()='%s']/parent::div/following-sibling::div/textarea",label));
+    }
+    public static By buttonLocator(String buttonLabel){
+        return By.xpath(String.format("//button[text()='%s']",buttonLabel));
+    }
+    public static By submissionOutput(String label){
+        return By.xpath(String.format("//div[@id='output']//p[@id='%s']",label));
+    }
     //Interactions
     public static By elementFromGroup(String groupElement){
         return By.xpath(String.format("//div[@class='body-height']//div[text()='%s']/following-sibling::div",groupElement));
