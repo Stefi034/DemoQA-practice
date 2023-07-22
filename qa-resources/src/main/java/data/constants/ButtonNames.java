@@ -14,6 +14,10 @@ public class ButtonNames {
     //Elements category
     public static final String SUBMIT = "Submit";
     public static final String TEXT_BOX = "Text Box";
+    public static final String RADIO_BUTTON = "Radio Button";
+    public static final String YES = "Yes";
+    public static final String IMPRESSIVE = "Impressive";
+    public static final String NO = "No";
     //Interactions category
     public static final String DRAGABBLE = "Dragabble";
     public static final String SIMPLE = "Simple";
