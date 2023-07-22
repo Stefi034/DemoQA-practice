@@ -1,25 +1,27 @@
 package tests.elements;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import qaPractice.pages.Dashboard;
 import tests.BaseTestClass;
 
-public class FillInTextBoxAndSubmitTest extends BaseTestClass {
+public class VerifyNoSubmissionWithWrongMailTest extends BaseTestClass {
     private static WebDriver driver;
     private static final String FULL_NAME = "Milorad Jovanovic";
-    private static final String EMAIL = "radmiloE@fake.com";
+    private static final String EMAIL = "badEmail";
     private static final String CURRENT_ADDRESS = "Juznomoravskih brigada 25";
     private static final String PERMANENT_ADDRESS = "29. Novembra 46";
 
     @BeforeAll
-    public static void setUpTest(){
+    public static void setUpTest() {
         driver = setUpDriver();
     }
+
     @Test
 
-    public void test(){
+    public void test() {
         Dashboard dashboard = new Dashboard(driver);
         dashboard.open();
         dashboard.openElementsPage()
@@ -29,14 +31,11 @@ public class FillInTextBoxAndSubmitTest extends BaseTestClass {
                 .insertCurrentAddress(CURRENT_ADDRESS)
                 .insertPermanentAddress(PERMANENT_ADDRESS)
                 .submitSubmitButton()
-                .verifyFullName(FULL_NAME)
-                .verifyEmail(EMAIL)
-                .verifyCurrentAddress(CURRENT_ADDRESS)
-                .verifyPermanentAddress(PERMANENT_ADDRESS);
+                .verifyEmailError()
+                .verifyOutputNotVisible();
     }
-//    @AfterAll
-//    public static void tearDownTest() {
-//        tearDown(driver);
-//    }
-
+        @AfterAll
+        public static void tearDownTest() {
+        tearDown(driver);
+    }
 }

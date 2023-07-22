@@ -66,6 +66,9 @@ public abstract class BasePageClass {
     protected void verifyWebElementIsDisplayed(By locator) {
         Assertions.assertTrue(isElementDisplayed(locator));
     }
+    protected void verifyWebElementNotDisplayed(By locator){
+        Assertions.assertTrue(!isElementDisplayed(locator));
+    }
 
     protected String getAttributeFromWebElement(By locator, String attribute) {
         return getWebElement(locator).getAttribute(attribute);
