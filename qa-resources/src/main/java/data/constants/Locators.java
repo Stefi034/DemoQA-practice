@@ -18,6 +18,9 @@ public class Locators {
     public static By inputField(String label, String placeholderText) {
         return By.xpath(String.format("//label[text()='%s']/parent::div/following-sibling::div//input[@placeholder='%s']", label, placeholderText));
     }
+    public static By inputFieldId(String id){
+        return By.xpath(String.format("//input[@id='%s']",id));
+    }
 
     public static By textAreaInputField(String label) {
         return By.xpath(String.format("//label[text()='%s']/parent::div/following-sibling::div/textarea", label));
@@ -36,6 +39,9 @@ public class Locators {
     public static By columnHeaderLocator(String columnLabel){
         return By.xpath(String.format("//div[text()='%s']/parent::div",columnLabel));
     }
+    public static By dialogTitleLocator(String title){
+        return By.xpath(String.format("//div[contains(@class,'title')][text()='%s']",title));
+    }
 
     //    public static By radioButton(String label){
 //        return By.xpath(String.format("//label[text()='%s']/preceding-sibling::input[not(contains(@class,'disabled'))]",label));
@@ -47,8 +53,12 @@ public class Locators {
     public static By radioButtonSuccess(String radioButton) {
         return By.xpath(String.format("//span[@class='text-success'][text()='%s']", radioButton));
     }
-    public static By webTableRow(String row){
-        return By.xpath(String.format("//div[@class='rt-tr-group']//div[@class='rt-td'][%s]",row));
+    public static By webTableInputByRow(String columnInput){
+        return By.xpath(String.format("//div[@class='rt-tr-group']//div[@class='rt-td'][%s]",columnInput));
+    }
+    public static By webTableRowInputs(String row){
+        return By.xpath(String.format("//div[@class='rt-tr-group'][1]//div[@class='rt-td']",row));
+
     }
 
     //Interactions

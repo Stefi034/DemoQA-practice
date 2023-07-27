@@ -1,11 +1,13 @@
 package qaPractice.pages.category;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import qaPractice.Page;
 
 import static data.constants.ButtonNames.*;
 import static data.constants.Labels.*;
 import static data.constants.Locators.*;
+import static data.constants.PageHeaders.REGISTRATION_FORM;
 
 public class Elements extends Page {
     public Elements(WebDriver driver) {
@@ -52,6 +54,26 @@ public class Elements extends Page {
         inputTextTextArea(PERMANENT_ADDRESS, permanentAddress);
         return this;
     }
+    public Elements insertFirstName(String firstName) {
+        inputTextInputField(FIRST_NAME, FIRST_NAME, firstName);
+        return this;
+    }
+    public Elements insertLastName(String lastName) {
+        inputTextInputField(LAST_NAME, LAST_NAME, lastName);
+        return this;
+    }
+    public Elements insertAge(String age) {
+        inputTextInputField(AGE, AGE, age);
+        return this;
+    }
+    public Elements insertSalary(String salary) {
+        inputTextInputField(SALARY, SALARY, salary);
+        return this;
+    }
+    public Elements insertDepartment(String department) {
+        inputTextInputField(DEPARTMENT, DEPARTMENT, department);
+        return this;
+    }
 
     public Elements submitSubmitButton() {
         clickOnButton(SUBMIT);
@@ -96,13 +118,25 @@ public class Elements extends Page {
         return this;
     }
     public Elements isSalaryAscending(){
-        isIntListSortedAscending(webTableRow(SALARY_INT_ROW));
+        isIntListSortedAscending(webTableInputByRow(SALARY_INT_ROW));
         return this;
     }
     public Elements salaryAscendingSort(){
         tableSorting(SALARY, ASCENDING_SORT);
         return this;
     }
+    public Elements clickAddButton(){
+        clickOnButton(ADD);
+        waitForElementToBeVisible(dialogTitleLocator(REGISTRATION_FORM),3);
+        return this;
+    }
+    public Elements verifyFirstName(String nesto){
+        String firstName = getTableContent(webTableRowInputs("1")).get(0);
+        Assertions.assertEquals(nesto, firstName,"Names not equal" );
+        return this;
+    }
+
+
 
 
 
