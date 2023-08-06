@@ -1,11 +1,13 @@
 package qaPractice.pages.category;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import qaPractice.Page;
 
 import static data.constants.ButtonNames.*;
 import static data.constants.Labels.*;
 import static data.constants.Locators.*;
+import static data.constants.PageHeaders.REGISTRATION_FORM;
 
 public class Elements extends Page {
     public Elements(WebDriver driver) {
@@ -52,6 +54,26 @@ public class Elements extends Page {
         inputTextTextArea(PERMANENT_ADDRESS, permanentAddress);
         return this;
     }
+    public Elements insertFirstName(String firstName) {
+        inputTextInputField(FIRST_NAME, FIRST_NAME, firstName);
+        return this;
+    }
+    public Elements insertLastName(String lastName) {
+        inputTextInputField(LAST_NAME, LAST_NAME, lastName);
+        return this;
+    }
+    public Elements insertAge(String age) {
+        inputTextInputField(AGE, AGE, age);
+        return this;
+    }
+    public Elements insertSalary(String salary) {
+        inputTextInputField(SALARY, SALARY, salary);
+        return this;
+    }
+    public Elements insertDepartment(String department) {
+        inputTextInputField(DEPARTMENT, DEPARTMENT, department);
+        return this;
+    }
 
     public Elements submitSubmitButton() {
         clickOnButton(SUBMIT);
@@ -96,13 +118,56 @@ public class Elements extends Page {
         return this;
     }
     public Elements isSalaryAscending(){
-        isIntListSortedAscending(webTableRow(SALARY_INT_ROW));
+        isIntListSortedAscending(webTableInputByRow(SALARY_INT_ROW));
         return this;
     }
     public Elements salaryAscendingSort(){
         tableSorting(SALARY, ASCENDING_SORT);
         return this;
     }
+    public Elements clickAddButton(){
+        clickOnButton(ADD);
+        waitForElementToBeVisible(dialogTitleLocator(REGISTRATION_FORM),3);
+        return this;
+    }
+    public Elements verifyWebTableFirstName(String firstName){
+        String firstNameInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(NAME_COLUMN);
+        Assertions.assertEquals(firstName, firstNameInserted,"Names not equal" );
+        return this;
+    }
+    public Elements verifyWebTableLastName(String lastName){
+        String lastNameInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(LAST_NAME_COLUMN);
+        Assertions.assertEquals(lastName, lastNameInserted,"Surnames not equal" );
+        return this;
+    }
+    public Elements verifyWebTableAge(String age){
+        String ageInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(AGE_COLUMN);
+        Assertions.assertEquals(age, ageInserted,"Ages not equal" );
+        return this;
+    }
+    public Elements verifyWebTableEmail(String email){
+        String emailInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(EMAIL_COLUMN);
+        Assertions.assertEquals(email, emailInserted,"Emails not equal" );
+        return this;
+    }
+    public Elements verifyWebTableSalary(String salary){
+        String salaryInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(SALARY_COLUMN);
+        Assertions.assertEquals(salary, salaryInserted,"Salary not equal" );
+        return this;
+    }
+    public Elements verifyWebTableDepartment(String department){
+        String departmentInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(DEPARTMENT_COLUMN);
+        Assertions.assertEquals(department, departmentInserted,"Departments not equal" );
+        return this;
+    }
+    public Elements searchWebTableByEmail(String email){
+        inputSearchBox(email);
+        clickWebElement(SEARCH_BOX_SEARCH_LOCATOR);
+        return this;
+    }
+
+
+
 
 
 

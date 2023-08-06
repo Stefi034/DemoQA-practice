@@ -7,9 +7,9 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static data.constants.Labels.NAME_LOW_CASE;
 import static data.constants.Locators.*;
 
 
@@ -59,7 +59,8 @@ public class Page extends BasePageClass {
     protected void clickOnButton(String buttonLabel) {
         clickWebElement(buttonLocator(buttonLabel));
     }
-    protected void clickOnRadioButton(String label){
+
+    protected void clickOnRadioButton(String label) {
         clickWebElement(radioButton(label));
     }
 
@@ -70,12 +71,16 @@ public class Page extends BasePageClass {
     protected void inputTextTextArea(String label, String inputText) {
         typeTextToWebElement(textAreaInputField(label), inputText);
     }
-    protected void tableSorting(String columnLabel, String order){
+    protected void inputSearchBox(String inputText){
+        typeTextToWebElement(SEARCH_BOX_INPUT_LOCATOR,inputText);
+    }
+
+    protected void tableSorting(String columnLabel, String order) {
         boolean flagOrder = true;
-        while (flagOrder){
+        while (flagOrder) {
             clickWebElement(columnHeaderLocator(columnLabel));
-            if (isElementDisplayed(tableSortingLocator(columnLabel, order))){
-                flagOrder=false;
+            if (isElementDisplayed(tableSortingLocator(columnLabel, order))) {
+                flagOrder = false;
             }
         }
     }
@@ -89,14 +94,24 @@ public class Page extends BasePageClass {
                 break;
             }
             int valueInt = Integer.parseInt(value);
-            if (valueInt>=comparingValue){
-                comparingValue=valueInt;
-            }if (comparingValue>valueInt){
+            if (valueInt >= comparingValue) {
+                comparingValue = valueInt;
+            }
+            if (comparingValue > valueInt) {
                 Assertions.fail("Elements not in ascending order!");
             }
         }
     }
 
+    protected List<String> getTableContent(By locator) {
+        List<String> userData = new ArrayList<>();
+        List<WebElement> elements = getWebElements(locator);
+        for (WebElement element: elements){
+            userData.add(element.getText());
+        }
+        System.out.println(userData);
+        return userData;
+    }
 
 
 }

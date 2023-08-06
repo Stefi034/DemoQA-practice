@@ -13,11 +13,14 @@ public class Locators {
 
     public static final By EMAIL_ERROR_LOCATOR = By.xpath("//label[text()='Email']/parent::div/following-sibling::div//input[contains(@class,'field-error')]");
     public static final By OUTPUT_LOCATOR = By.xpath("//div[@id='output']");
+    public static final By SEARCH_BOX_INPUT_LOCATOR = By.xpath("//input[@id='searchBox']");
+    public static final By SEARCH_BOX_SEARCH_LOCATOR = By.xpath("//span[@class='input-group-text']");
 
     //Elements
     public static By inputField(String label, String placeholderText) {
         return By.xpath(String.format("//label[text()='%s']/parent::div/following-sibling::div//input[@placeholder='%s']", label, placeholderText));
     }
+
 
     public static By textAreaInputField(String label) {
         return By.xpath(String.format("//label[text()='%s']/parent::div/following-sibling::div/textarea", label));
@@ -30,11 +33,17 @@ public class Locators {
     public static By submissionOutput(String label) {
         return By.xpath(String.format("//div[@id='output']//p[@id='%s']", label));
     }
-    public static By tableSortingLocator(String columnLabel, String order){
-        return By.xpath(String.format("//div[text()='%s']/parent::div[contains(@class,'%s')]",columnLabel, order));
+
+    public static By tableSortingLocator(String columnLabel, String order) {
+        return By.xpath(String.format("//div[text()='%s']/parent::div[contains(@class,'%s')]", columnLabel, order));
     }
-    public static By columnHeaderLocator(String columnLabel){
-        return By.xpath(String.format("//div[text()='%s']/parent::div",columnLabel));
+
+    public static By columnHeaderLocator(String columnLabel) {
+        return By.xpath(String.format("//div[text()='%s']/parent::div", columnLabel));
+    }
+
+    public static By dialogTitleLocator(String title) {
+        return By.xpath(String.format("//div[contains(@class,'title')][text()='%s']", title));
     }
 
     //    public static By radioButton(String label){
@@ -47,8 +56,13 @@ public class Locators {
     public static By radioButtonSuccess(String radioButton) {
         return By.xpath(String.format("//span[@class='text-success'][text()='%s']", radioButton));
     }
-    public static By webTableRow(String row){
-        return By.xpath(String.format("//div[@class='rt-tr-group']//div[@class='rt-td'][%s]",row));
+
+    public static By webTableInputByRow(String columnInput) {
+        return By.xpath(String.format("//div[@class='rt-tr-group']//div[@class='rt-td'][%s]", columnInput));
+    }
+
+    public static By webTableRowInputs(String row) {
+        return By.xpath(String.format("//div[@class='rt-tr-group'][%s]//div[@class='rt-td']", row));
     }
 
     //Interactions
