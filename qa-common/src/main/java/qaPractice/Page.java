@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static data.constants.Labels.NAME_LOW_CASE;
 import static data.constants.Locators.*;
 
 
@@ -71,6 +70,9 @@ public class Page extends BasePageClass {
 
     protected void inputTextTextArea(String label, String inputText) {
         typeTextToWebElement(textAreaInputField(label), inputText);
+    }
+    protected void inputSearchBox(String inputText){
+        typeTextToWebElement(SEARCH_BOX_INPUT_LOCATOR,inputText);
     }
 
     protected void tableSorting(String columnLabel, String order) {

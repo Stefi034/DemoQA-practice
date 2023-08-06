@@ -1,5 +1,6 @@
 package tests.elements;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -35,14 +36,16 @@ public class VerifyAddNewEntryInWebTableTest extends BaseTestClass {
                 .insertSalary(SALARY)
                 .insertDepartment(DEPARTMENT)
                 .submitSubmitButton()
-                .verifyFirstName(FIRST_NAME);
-
-
-
-
+                .searchWebTableByEmail(EMAIL)
+                .verifyWebTableFirstName(FIRST_NAME)
+                .verifyWebTableLastName(LAST_NAME)
+                .verifyWebTableAge(AGE)
+                .verifyWebTableEmail(EMAIL)
+                .verifyWebTableSalary(SALARY)
+                .verifyWebTableDepartment(DEPARTMENT);
     }
-//    @AfterAll
-//    public static void tearDownTest() {
-//        tearDown(driver);
-//    }
+    @AfterAll
+    public static void tearDownTest() {
+        tearDown(driver);
+    }
 }

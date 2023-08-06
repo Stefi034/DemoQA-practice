@@ -130,11 +130,42 @@ public class Elements extends Page {
         waitForElementToBeVisible(dialogTitleLocator(REGISTRATION_FORM),3);
         return this;
     }
-    public Elements verifyFirstName(String nesto){
-        String firstName = getTableContent(webTableRowInputs("1")).get(0);
-        Assertions.assertEquals(nesto, firstName,"Names not equal" );
+    public Elements verifyWebTableFirstName(String firstName){
+        String firstNameInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(NAME_COLUMN);
+        Assertions.assertEquals(firstName, firstNameInserted,"Names not equal" );
         return this;
     }
+    public Elements verifyWebTableLastName(String lastName){
+        String lastNameInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(LAST_NAME_COLUMN);
+        Assertions.assertEquals(lastName, lastNameInserted,"Surnames not equal" );
+        return this;
+    }
+    public Elements verifyWebTableAge(String age){
+        String ageInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(AGE_COLUMN);
+        Assertions.assertEquals(age, ageInserted,"Ages not equal" );
+        return this;
+    }
+    public Elements verifyWebTableEmail(String email){
+        String emailInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(EMAIL_COLUMN);
+        Assertions.assertEquals(email, emailInserted,"Emails not equal" );
+        return this;
+    }
+    public Elements verifyWebTableSalary(String salary){
+        String salaryInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(SALARY_COLUMN);
+        Assertions.assertEquals(salary, salaryInserted,"Salary not equal" );
+        return this;
+    }
+    public Elements verifyWebTableDepartment(String department){
+        String departmentInserted = getTableContent(webTableRowInputs(FIRST_ROW)).get(DEPARTMENT_COLUMN);
+        Assertions.assertEquals(department, departmentInserted,"Departments not equal" );
+        return this;
+    }
+    public Elements searchWebTableByEmail(String email){
+        inputSearchBox(email);
+        clickWebElement(SEARCH_BOX_SEARCH_LOCATOR);
+        return this;
+    }
+
 
 
 

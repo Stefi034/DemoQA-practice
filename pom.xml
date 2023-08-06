@@ -27,6 +27,13 @@
             <artifactId>selenium-java</artifactId>
             <version>4.8.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.10.0</version>
+        </dependency>
+
 
     </dependencies>
     <properties>
